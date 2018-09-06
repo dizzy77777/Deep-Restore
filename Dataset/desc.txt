@@ -1,0 +1,7 @@
+KB Maske nur kleine Bereiche
+MB Mischung
+GB Maske enthält große Bereiche
+
+KF kleiner Flow
+MF Mischung
+GF großer Flow
