@@ -150,7 +150,7 @@ We evaluate our approaches on ground truth data given from HS-Art~\cite{hs-art}.
 "Deep Restore" - a combination of the two terms "deep learning" and "image restore". As the name of this project suggests, we focus our considerations on image restoration based on deep learning methods. This project is done in cooperation with HS-Art~\cite{hs-art}, who specialize in fields of archive film restoration and preservation\footnote{All the images used in this project are provided by HS-Art~\cite{hs-art}.}.
 
 
-Image restoration describes the process of determining undistorted images from corrupted ones. It is used in a wide range of image and video processing applications and a basic method in computer vision. There exist many different approaches and an overview on some techniques can be found in Section~\ref{sec:num2}.
+Image restoration describes the process of determining undistorted images from corrupted ones. It is used in a wide range of image and video processing applications and it is a basic method in computer vision. There exist many different approaches and an overview on some techniques can be found in Section~\ref{sec:num2}.
 
 As Goodfellow et al.~\cite{Goodfellow16} state, deep learning is a part of machine learning methods based on feature learning and it is nowadays present in different fields like: computer vision, speech and audio recognition, bioinformatics and others. The learning of complicated tasks is based on the combination of many simpler ones and this hierarchy structure is deep, hence the name deep learning. There are different deep learning architectures like \textit{e.g.} recurrent neural networks (RNNs), Boltzmann machines, convolutional neural networks (CNNs), \textit{etc}. The learning of these architectures can either happen supervised, semi-supervised or unsupervised.
 
@@ -286,7 +286,7 @@ Another recent trend in machine learning, that is popular in image in-painting, 
 \section{Image Segmentation}
 \label{sec:num3}
 
-In this Section follows a description of our methods and approaches for detecting impurities by image segmentation. As already mentioned we focus on a machine learning approach namely CNNs. Section~\ref{ssec:num31} gives an overview of architectures that use just the current image to perform the image segmentation. Section~\ref{ssec:num32} shows architectures that use additional information, the previous and next image, to perform image segmentation of the current image. And Section~\ref{ssec:num32} lists the approach of using additional warped instances of the previous and next image.
+In this Section follows a description of our methods and approaches for detecting impurities by image segmentation. As already mentioned, we focus on a machine learning approach namely CNNs. Section~\ref{ssec:num31} gives an overview of architectures that use just the current image to perform the image segmentation. Section~\ref{ssec:num32} shows architectures that use additional information, the previous and next image, to perform image segmentation of the current image. And Section~\ref{ssec:num32} lists the approach of using additional warped instances of the previous and next image.
 
 It should be mentioned that if not stated otherwise, we use ReLU activation functions between layers and a sigmoid output activation function to perform image segmentation, which is in general a classification task.  We also apply regularization techniques that are described in Section~\ref{ssec:num34}. We choose the cross-entropy-error (CEE) for computing the loss/error between predicted and ground-truth segmentation masks.
 
@@ -384,7 +384,7 @@ This Section gives an overview of architectures that use additional input inform
 \end{figure}
 
 
-The different networks (Figure~\ref{fig:flow_architecutes}) tested are: \begin{enumerate*}[label=(\alph*)]\item an early combine network consisting of five blocks. We name this network "early combine" since we combine the information of all images in the beginning. \item A late combine network that consists of two shared blocks (the line with the filled circle in Figure~\ref{fig:flow_late_combine}~and~\ref{fig:flow_densenet_comb} means that weights and biases are shared for this block). We name this network "late combine" since we combine the information of all images later. \item A network based on the work of Ronneberger et al.~\cite{Ronneberger15}, consisting of three layers and that uses a combination of max-pooling and de-convolution. \item A network based on the work of Huang et al.~\cite{Huang16} that consists of five sub-blocks. \item A network, again based on the work of Huang et al.~\cite{Huang16}, that consists of an upper path and a lower path. The upper path consists of two densenet blocks and the lower path of two shared densenet block. We combine the two paths via concatenating to achieve a final segmentation mask. The idea behind this concept is that the upper and lower path may learn different features that combined achieve better results. \item A bottleneck network consisting of five blocks. We name this network "bottleneck" because of its structure to reduce the features via a $1\times1$ convolution. This is done to reduce the parameters of the network. And, \item a network based on the work of Huang et al.~\cite{Huang16} and Ronneberger et al.~\cite{Ronneberger15}. It consists of an upper path and a lower path. The upper path consists of two densenet blocks and the lower path of an U-Net block with three layers. We subtract the intermediate results of the two paths to achieve a final segmentation mask. The idea behind this concept is the same as for the "densenet combine"-network (e). \end{enumerate*}
+The different networks (Figure~\ref{fig:flow_architecutes}) tested are: \begin{enumerate*}[label=(\alph*)]\item an early combine network consisting of five blocks. We name this network "early combine" since we combine the information of all images in the beginning. \item A late combine network that consists of two shared blocks (the line with the filled circle in Figure~\ref{fig:flow_late_combine}~and~\ref{fig:flow_densenet_comb} means that weights and biases are shared for this block). We name this network "late combine" since we combine the information of all images later. \item A network based on the work of Ronneberger et al.~\cite{Ronneberger15}, consisting of three layers and that uses a combination of max-pooling and de-convolution. \item A network based on the work of Huang et al.~\cite{Huang16} that consists of five sub-blocks. \item A network, again based on the work of Huang et al.~\cite{Huang16}, that consists of an upper path and a lower path. The upper path consists of two densenet blocks and the lower path of two shared densenet blocks. We combine the two paths via concatenating to achieve a final segmentation mask. The idea behind this concept is that the upper and lower path may learn different features that combined achieve better results. \item A bottleneck network consisting of five blocks. We name this network "bottleneck" because of its structure to reduce the features via a $1\times1$ convolution. This is done to reduce the parameters of the network. And, \item a network based on the work of Huang et al.~\cite{Huang16} and Ronneberger et al.~\cite{Ronneberger15}. It consists of an upper path and a lower path. The upper path consists of two densenet blocks and the lower path of an U-Net block with three layers. We subtract the intermediate results of the two paths to achieve a final segmentation mask. The idea behind this concept is the same as for the "densenet combine"-network (e). \end{enumerate*}
 The results of the different architectures are listed in Section~\ref{ssec:num532}.
 
 \begin{figure}[H]
@@ -587,38 +587,34 @@ As Ioffe et al.~\cite{Ioffe15} mention, this technique leads to better learning 
 \section{Image In-painting}
 \label{sec:num4}
 
-In this Section follows a description of our methods and approaches for the removing of impurities by image in-painting. Again, we focus on machine learning approaches namely CNNs but compare these against a diffusion based image in-painting. Section~\ref{ssec:num41} gives an overview CNN architectures that are trained for a single color channel. Section~\ref{ssec:num42} gives an theoretical overview on diffusion based image in-painting, as well as the exact used approach. 
-The results of the different image in-painting approaches can be seen in Section~\ref{ssec:num54}.
+In this Section follows a description of our methods and approaches for the removing of impurities by image in-painting. We try out different approaches. In Section~\ref{ssec:num41} we perform image in-painting based on the generated segmentation masks of the Densenet Combined model, since this model achieves best results (see Section~\ref{ssec:num532}). In Section~\ref{ssec:num42} follows an approach where we do not use any segmentation mask at all. 
 
-\subsection{CNN}
+\subsection{With Segmentation Mask}
 \label{ssec:num41}
 
-Based on the results of Section~\ref{ssec:num532} we decide to use an U-Net approach and a densenet approach. Additionally, as seen in Section~\ref{ssec:num532}, we use information from previous and next images as well. We train all following networks on quintuples of: previous~-~current~-~next~images~-~masks + ground-truth~in-painting.
+As already mentioned, in this Section we perform image in-painting by using our previously generated segmentation mask. Again, we focus on machine learning approaches namely CNNs but compare these against a diffusion based image in-painting. Section~\ref{sssec:num411} gives an overview of CNN architectures that are trained for a single color channel. Section~\ref{sssec:num412} gives an theoretical overview on diffusion based image in-painting, as well as the exact used approach. 
+The results of the different image in-painting approaches can be seen in Section~\ref{sssec:num541}.
+
+\subsubsection{CNN}
+\label{sssec:num411}
+
+Based on the results of Section~\ref{ssec:num532} we decide to test various densenet approaches. Additionally, as seen in Section~\ref{ssec:num532}, we use information from previous and next images as well. We train all following networks on quintuples of: previous~-~current~-~next~images~-~ground-truth-masks + ground-truth~in-painting.
 
 
-It should be mentioned that we use ReLU activation functions between layers and a sigmoid output activation function to perform image in-painting. We also apply regularization techniques, namely early stopping (Section~\ref{sssec:num341}), dropout (Section~\ref{sssec:num342}) and $L_2$-regularization (Section~\ref{sssec:num343}). We choose the $L_2$-loss for computing the loss/error between predicted and ground-truth in-painting but just over masked pixels. And, we copy valid input pixel values into the predicted in-painting.
+It should be mentioned that we use ReLU activation functions between layers and a ReLU output activation function to perform image in-painting. We also apply regularization techniques, namely early stopping (Section~\ref{sssec:num341}), dropout (Section~\ref{sssec:num342}) and $L_2$-regularization (Section~\ref{sssec:num343}). We choose the $L_2$-loss for computing the loss/error between predicted and ground-truth in-painting.  For \ref{fig:paint_densenet} we calculated the loss just over masked pixels. And, we copy valid input pixel values into the predicted in-painting.
 
 Since we train on a single color channel, we also have to perform the testing on each color channel separately and combine the intermediate results.
 
 
-The different networks (Figure~\ref{fig:paint_architectures}) tested are: \begin{enumerate*}[label=(\alph*)]\item a network based on the work of Ronneberger et al.~\cite{Ronneberger15} consisting of three layers, a \item a network based on the work of Huang et al.~\cite{Huang16} that consists of five sub-blocks, and \item a network with two paths, where we add the input image in the end. This network is also based on the work of Huang et al.~\cite{Huang16} and for this network we use a Tanh output activation function.\end{enumerate*}
+The different networks (Figure~\ref{fig:paint_architectures}) tested are: \begin{enumerate*}[label=(\alph*)] \item a network based on the work of Huang et al.~\cite{Huang16} that consists of five sub-blocks, and \item a network with two paths, where we add the input image in the end. This network is also based on the work of Huang et al.~\cite{Huang16} and for this network we use a linear output activation function.\end{enumerate*}
 
 
 
 \begin{figure}[H]
-	\centering
-	\begin{subfigure}{.95\textwidth}
-	\includegraphics[width=\linewidth]{models_painting/unet.png}
-	\caption[figure]{An U-Net-network for image in-painting with three layers.}
-	\label{fig:paint_unet}
-	\end{subfigure}
-\end{figure}
-\begin{figure}[H]
-  \ContinuedFloat
-  \centering
+\centering
 	\begin{subfigure}{.95\textwidth}
 	\includegraphics[width=\linewidth]{models_painting/densenet.png}
-	\caption[figure]{A densenet-network for image in-painting with five sub-blocks.}
+	\caption[figure]{A "densenet copy"-network for image in-painting with five sub-blocks.}
 	\label{fig:paint_densenet}
 	\end{subfigure}
 \end{figure}
@@ -627,17 +623,17 @@ The different networks (Figure~\ref{fig:paint_architectures}) tested are: \begin
   \centering
   \begin{subfigure}{.95\textwidth}
 	\includegraphics[width=\linewidth]{models_painting/densenet2.png}
-	\caption[figure]{A densenet-network for image in-painting with five sub-blocks and two paths.}
+	\caption[figure]{A "densenet add"-network for image in-painting with five sub-blocks.}
 	\label{fig:paint_densenet2}
 	\end{subfigure}
   	
-	\caption[figure]{Different image in-painting CNN architectures.}
+	\caption[figure]{Different CNN architectures for image in-painting with previously generated segmentation mask.}
 		\label{fig:paint_architectures}
 \end{figure}
 
 
-\subsection{Perona-Malik In-painting}
-\label{ssec:num42}
+\subsubsection{Perona-Malik In-painting}
+\label{sssec:num412}
 The second image in-painting approach is based on a modified version of coherence-enhancing image diffusion. The theoretical basis are after Perona~and~Malik~\cite{Perona90} or Weickert~\cite{weickert98}. Now follows a description of the used method for one color channel.
 
 Let $u : \Omega \rightarrow \mathbb{R}$ be the image function, with $  \Omega \subset \mathbb{R}^2$ the image domain. The basic diffusion equation is given by: \begin{equation}\frac{\partial u}{\partial t}=\text{div}(\nabla u)\,.
@@ -711,6 +707,49 @@ Q U^{t+1}-Q U^t+\hat{Q}\tau K^TD(U^t)K U^{t+1} &= 0 \\
 
 The extension of this single channel image in-painting to color images is done by applying the diffusion for each channel. To avoid artifacts many different approaches exist. As {\AA}str{\"o}m et al.~\cite{aastrom11} state one could use a different color space, like HSV instead of RGB, use one diffusion tensor for each channel that is computed as the weighted average sum of the structure tensors for each color channel, use a different structure tensor for each channel, \textit{etc.} We choose the approach of using the weighted sum over all channels for the structure tensor and use this for each channel.
 
+\subsection{Without Segmentation Mask}
+\label{ssec:num42}
+
+As an additional variant for image in-painting, we decide to test the estimation of the corrupted pixels without the help of the segmentation mask. Again, we test different densenet approaches and we use use information from previous and next images as well. But now we train all following networks on triples of: previous~-~current~-~next~images~ + ground-truth~in-painting, so without a mask.
+
+
+It should be mentioned that we use ReLU activation functions between layers and a linear output activation function to perform image in-painting. We do not apply any regularization techniques. We choose the $L_2$-loss for computing the loss/error between predicted and ground-truth in-painting.  For the first two networks we train on color images (Figures~\ref{fig:inpai6}~and~\ref{fig:inpai7}). The model in Figure~\ref{fig:inpai5} gets trained on a single color channel, so we also have to perform the testing on each color channel separately and combine the intermediate results.
+
+
+The different networks (Figure~\ref{fig:paint_architectures2}), all based on the work of Huang et al.~\cite{Huang16}, tested are: \begin{enumerate*}[label=(\alph*)] \item a network that consists of five sub-blocks and that uses color images as an input, \item a network that consists of two shared densenet blocks for each color channel. This network also uses color images as an input. And, \item a network similar to (a) but this time we train and test on single color channels.\end{enumerate*} For all networks we add the input image in the end to achieve a final in-painted image. The results of these different image in-painting approaches can be seen in Section~\ref{sssec:num542}.
+
+
+\begin{figure}[H]
+\centering
+	\begin{subfigure}{.95\textwidth}
+	\includegraphics[width=\linewidth]{models_painting_warp/inpai6.png}
+	\caption[figure]{A "densenet add"-network for image in-painting with five sub-blocks (Training and testing with color images).}
+	\label{fig:inpai6}
+	\end{subfigure}
+\end{figure}
+\begin{figure}[H]
+  \ContinuedFloat
+  \centering
+  \begin{subfigure}{.95\textwidth}
+	\includegraphics[width=\linewidth]{models_painting_warp/inpai7.png}
+	\caption[figure]{A "densenet combine add"-network for image in-painting with two shared densenet blocks for each color channel (Training and testing with color images).}
+	\label{fig:inpai7}
+	\end{subfigure}
+
+\end{figure}
+\begin{figure}[H]
+  \ContinuedFloat
+\centering
+	\begin{subfigure}{.95\textwidth}
+	\includegraphics[width=\linewidth]{models_painting_warp/inpai5.png}
+	\caption[figure]{A "densenet add"-network for image in-painting with five sub-blocks (Training and testing with  single color channels).}
+	\label{fig:inpai5}
+	\end{subfigure}
+	
+	  	
+	\caption[figure]{Different CNN architectures for mask-less image in-painting.}
+		\label{fig:paint_architectures2}
+\end{figure}
 
 
 \section{Evaluation}
@@ -720,7 +759,7 @@ We evaluate our different approaches with ground-truth images from HS-Art~\cite{
 
 \subsection{Dataset}
 \label{ssec:num51}
-HS-Art~\cite{hs-art} provides us with a total of 173 image sequences. Per sequence we get an input image (current image) that is corrupted, the previous image in the sequence, the next image in the sequence, the ground-truth segmentation mask, highlighting impurities in the current image as well as ground truth image in-painting results of the current image. Each image is of size $512 \times 512$. For 77 out of these 173 image sequences we additionally have warped instances of the previous and next image, these sequences are used to evaluate Section~\ref{ssec:num33}. For Section~\ref{ssec:num31},~\ref{ssec:num32}~and~\ref{ssec:num41} we use the other 96 image sequences.
+HS-Art~\cite{hs-art} provides us with a total of 173 image sequences. Per sequence we get an input image (current image) that is corrupted, the previous image in the sequence, the next image in the sequence, the ground-truth segmentation mask, highlighting impurities in the current image as well as ground truth image in-painting results of the current image. Each image is of size $512 \times 512$. For 77 out of these 173 image sequences we additionally have warped instances of the previous and next image, these sequences are used to evaluate Section~\ref{ssec:num33} and \ref{ssec:num42}. For Section~\ref{ssec:num31},~\ref{ssec:num32}~and~\ref{ssec:num41} we use the other 96 image sequences.
 
 For training and evaluation of our CNN approaches we split the sequences into $80\%$ training sequences and $20\%$ test sequences. The training is done on patches of size $128 \times 128$, unless otherwise stated, and we train on patches were atleast $1\%$ and at most $80\%$ pixels are impure.
 
@@ -745,7 +784,7 @@ The project was realized in python and we used the Tensorflow API to implement o
 
 In the following Sections we list the results of image segmentation using a single image (Section~\ref{ssec:num531}), additional information from previous and next images (Section~\ref{ssec:num532}) and additional information by using warped instances of previous and next images (Section~\ref{ssec:num533}).
 \subsubsection{Single Input Image}
-
+\label{ssec:num531}
 The results in Figure~\ref{fig:resu_single} suggest that the information given in just a single current image is not enough for a sufficient learning and estimating of the segmentation mask.
 Therefore, we add additional information by using the previous and next image frames for all additional approaches.
 
@@ -801,7 +840,7 @@ Therefore, we add additional information by using the previous and next image fr
 \end{center}\end{table}
 
 
-\label{ssec:num531}
+
 \subsubsection{Multiple Input Images}
 \label{ssec:num532}
 Following prior results, we decided to not evaluate the UNet-architecture (Figure~\ref{fig:flow_unet}) but rather work with the other approaches from Section~\ref{ssec:num32}.
@@ -982,29 +1021,63 @@ Figure~\ref{fig:resu_warp1}~and~\ref{fig:resu_warp2} show results for architectu
 \subsection{Results for Image In-painting}
 \label{ssec:num54}
 
-Figure~\ref{fig:resu_pm} gives an overview of the results of different image in-painting approaches. One can see that the Densenet approach achieves the visual most appealing image in-painting results followed by the Densenet paths and the Perona-Malik method. The U-Net approach has the visual worst results.
+In the following Sections we list the results of image in-painting using the generated segmentation mask (Section~\ref{sssec:num541}) from the Densenet Combined model and in Section~\ref{sssec:num542} we list the results of image in-painting without a segmentation mask.
+
+\subsubsection{With Segmentation Mask}
+\label{sssec:num541}
+
+Figure~\ref{fig:resu_pm} gives an overview of the results of different image in-painting approaches. One can see that the Densenet Copy approach achieves the visual most appealing image in-painting results followed by the Densenet Add. The Perona-Malik method has the visual worst results.
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c c c}
+\begin{tabular}{ c c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
- \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests0/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.13\linewidth, decodearray={1 0 1 0 1 0}]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests0/GT_mask.png}} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests0/GT_out.png} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests0/pred_out.png}& \includegraphics[width=.13\linewidth]{results_painting/densenet/loss_and_acc_over_mask_densenet/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/densenet/results_paths_3_mask/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/pm/results/results0/res_diffusion.png} \\
-    \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests3/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.13\linewidth, decodearray={1 0 1 0 1 0}]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests3/GT_mask.png}} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests3/GT_out.png} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests3/pred_out.png}& \includegraphics[width=.13\linewidth]{results_painting/densenet/loss_and_acc_over_mask_densenet/cnn_tests_restore/cnn_tests3/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/densenet/results_paths_3_mask/cnn_tests_restore/cnn_tests3/pred_out.png} &\includegraphics[width=.13\linewidth]{results_painting/pm/results/results3/res_diffusion.png} \\
-     \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests5/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.13\linewidth, decodearray={1 0 1 0 1 0}]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests5/GT_mask.png}} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests5/GT_out.png} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests5/pred_out.png}& \includegraphics[width=.13\linewidth]{results_painting/densenet/loss_and_acc_over_mask_densenet/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/densenet/results_paths_3_mask/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/pm/results/results5/res_diffusion.png} \\
-       \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests7/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.13\linewidth, decodearray={1 0 1 0 1 0}]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests7/GT_mask.png}} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests7/GT_out.png} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests7/pred_out.png}& \includegraphics[width=.13\linewidth]{results_painting/densenet/loss_and_acc_over_mask_densenet/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/densenet/results_paths_3_mask/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/pm/results/results7/res_diffusion.png} \\
-        \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests9/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.13\linewidth, decodearray={1 0 1 0 1 0}]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests9/GT_mask.png}} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests9/GT_out.png} & \includegraphics[width=.13\linewidth]{results_painting/unet/loss_and_acc_over_mask_unet/cnn_tests_restore/cnn_tests9/pred_out.png}& \includegraphics[width=.13\linewidth]{results_painting/densenet/loss_and_acc_over_mask_densenet/cnn_tests_restore/cnn_tests9/pred_out.png} &
- \includegraphics[width=.13\linewidth]{results_painting/densenet/results_paths_3_mask/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.13\linewidth]{results_painting/pm/results/results9/res_diffusion.png} \\
- (a) Input & (b) Mask & (c) GT & (d)  U-Net & (e) Densenet & (f) \makecell{Densenet\\paths} & (g) \makecell{Perona-\\Malik}
+ \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results0/res_diffusion.png} \\
+    \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} &\includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results3/res_diffusion.png} \\
+     \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results5/res_diffusion.png} \\
+       \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results7/res_diffusion.png} \\
+        \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests9/pred_out.png} &
+ \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results9/res_diffusion.png} \\
+ (a) Input & (b) Mask & (c) GT & (d) \makecell{Densenet\\Copy} & (e) \makecell{Densenet\\Add} & (f) \makecell{Perona-\\Malik}
 \end{tabular}
 
-\captionof{figure}{Sample results of image in-painting for U-Net (Figure~\ref{fig:paint_unet}), Densenet (Figure~\ref{fig:paint_densenet}), Densenet paths (Figure~\ref{fig:paint_densenet2}) and Perona-Malik (Section~\ref{ssec:num42}).}
+\captionof{figure}{Sample results of image in-painting with estimated segmentation mask for Densenet Copy (Figure~\ref{fig:paint_densenet}), Densenet Add (Figure~\ref{fig:paint_densenet2}) and Perona-Malik (Section~\ref{ssec:num42}).}
 %\caption{Comparison of thermal efficiency of Present study with O. Kaska []}
 \label{fig:resu_pm}
+\end{center}\end{table}
+
+
+\subsubsection{Without Segmentation Mask}
+\label{sssec:num542}
+
+Figure~\ref{fig:resu_pm2} gives an overview of the results of different image in-painting approaches without the use of a segmentation mask. One can see that the Densenet Add approach, trained on a single image channel, achieves the visual most appealing image in-painting results. For the approaches trained on color images, the Densenet Add model performs better than the Densenet Combine Add model.
+
+\begin{table}[H]\begin{center}
+\begin{tabular}{ c c c c c c}
+ %\multicolumn{}{|c|}{Country List} \\
+ 
+ \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests1/pred_out.png} \\
+    \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests4/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/pred_out.png} &\includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests4/pred_out.png} \\
+     \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests8/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests8/pred_out.png} \\
+       \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests9/pred_out.png} \\
+        \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests11/pred_out.png} &
+ \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests11/pred_out.png} \\
+ (a) Input & (b) GT-Mask & (c) GT & (d) \makecell{Densenet\\Add\\one channel} & (e) \makecell{Densenet\\Add\\color image} & (f) \makecell{Densenet\\Combine Add\\color image}
+\end{tabular}
+
+\captionof{figure}{Sample results of image in-painting without estimated segmentation mask for Densenet Add (Figure~\ref{fig:inpai5}) that was trained and tested on a single color channel, and the models trained and tested on color images: Densenet Add (Figure~\ref{fig:inpai6}) and Densenet Combine Add (Figure~\ref{fig:inpai7}).}
+%\caption{Comparison of thermal efficiency of Present study with O. Kaska []}
+\label{fig:resu_pm2}
 \end{center}\end{table}
 
 \newpage
@@ -1017,7 +1090,9 @@ The impurity detection based on image segmentation as in Section~\ref{ssec:num32
 
 Also the segmentation using just a single input image does not work at all. This may be due to the fact, that the impurities often are not that distinctive compared to the overall structure of the images. Adding additional information from previous and next images improve the results, since most of the time the impurities on the current frame are not visible in the previous and next image (Figure~\ref{fig:flow_input}) and the CNNs are able to suppress the structural properties of the images. The approach with unwarped image instances works bad for sequences with high optical flow. This may be because that pixels concealed in one image but visible in another are treated just like impurities. \\
 
-The correction of the impurities based on image in-painting works visually best with the Densenet model (Figure~\ref{fig:flow_densenet_comb}). Other approaches, like \textit{e.g.} an encoder-decoder scheme or an approach based on GANs may achieve better results, but they may be more complex to train. The Perona-Malik approach may be improved by using an adaptive variant of the coherence enhancing diffusion, like in the work of Prasath~\cite{Prasath16}, but as a relative efficient model, it works quite well.\\
+The correction of the impurities based on image in-painting using a previously generated segmentation mask (Section~\ref{ssec:num41}) works visually best with the Densenet Copy model (Figure~\ref{fig:flow_densenet_comb}). Other approaches, like \textit{e.g.} an encoder-decoder scheme or an approach based on GANs may achieve better results, but they may be more complex to train. The Perona-Malik approach may be improved by using an adaptive variant of the coherence enhancing diffusion, like in the work of Prasath~\cite{Prasath16}, but as a relative efficient model, it works quite well. Overall, all the the in-painting methods that rely on a previously generated segmentation mask can significantly be improved if the used segmentation mask has a high quality. 
+
+The image in-painting without using a segmentation mask as in Section~\ref{ssec:num42} works best with the Densenet Add model trained on a single image channel (Figure~\ref{fig:inpai5}). The models trained on color images perform worse, maybe due to too simple model architectures.\\ 
 
 In general a higher number of training and test data would improve the results of our CNN approaches. Supervised deep learning approaches need a huge amount of training data to perform well. Also, some of the provided ground-truth masks are of poor quality, which makes it hard for the networks to learn sufficiently. \\
 
