@@ -176,7 +176,7 @@ As already mentioned, the goal of this project is to perform image restoration b
 	\label{fig:intro_desc}
 \end{figure}
 
-By investigating our given images and by performing research, we conclude that we can categorize the impurities of corrupted images into: \begin{enumerate*}[label=(\alph*)]\item dust, \item noise, other damages (like \item bent frames, \item scratches, \textit{etc.}) and for subsequent image frames \item flicker.\end{enumerate*} During this theses we focus on: dust, noise and other damages. An overview of the different impurities is given in Figure~\ref{fig:impurities}, the images were taken from~\cite{hs-art2}.
+By investigating our given images and by performing research, we conclude that we can categorize the impurities of corrupted images into: \begin{enumerate*}[label=(\alph*)]\item dust, \item noise, other damages (like \item bent frames, \item scratches, \textit{etc.}) and for subsequent image frames \item flicker.\end{enumerate*} During this thesis we focus on: dust, noise and other damages. An overview of the different impurities is given in Figure~\ref{fig:impurities}, the images were taken from~\cite{hs-art2}.
 
 
 \begin{table}[H]\begin{center}
@@ -710,7 +710,7 @@ The extension of this single channel image in-painting to color images is done b
 \subsection{Without Segmentation Mask}
 \label{ssec:num42}
 
-As an additional variant for image in-painting, we decide to test the estimation of the corrupted pixels without the help of the segmentation mask. Again, we test different densenet approaches and we use use information from previous and next images as well. But now we train all following networks on triples of: previous~-~current~-~next~images~ + ground-truth~in-painting, so without a mask.
+As an additional variant for image in-painting, we decide to test the estimation of the corrupted pixels without the help of the segmentation mask. This is due to the fact that the provided ground truth segmentation masks are of poor quality. Again, we test different densenet approaches and we use use information from previous and next images as well. But now we train all following networks on triples of: previous~-~current~-~next~images~ + ground-truth~in-painting, so without a mask.
 
 
 It should be mentioned that we use ReLU activation functions between layers and a linear output activation function to perform image in-painting. We do not apply any regularization techniques. We choose the $L_2$-loss for computing the loss/error between predicted and ground-truth in-painting.  For the first two networks we train on color images (Figures~\ref{fig:inpai6}~and~\ref{fig:inpai7}). The model in Figure~\ref{fig:inpai5} gets trained on a single color channel, so we also have to perform the testing on each color channel separately and combine the intermediate results.
@@ -789,8 +789,12 @@ The results in Figure~\ref{fig:resu_single} suggest that the information given i
 Therefore, we add additional information by using the previous and next image frames for all additional approaches.
 
 \begin{table}[ht!]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+ \begin{tabular}{ c c c c c}
+
+%\begin{tabular}{p{3cm}p{3cm}p{3cm}p{3cm}p{3cm}}
  %\multicolumn{}{|c|}{Country List} \\
+
  
  
 \includegraphics[width=.17\linewidth]{results_single/1000iter_early_combine/cnn_tests/cnn_tests0/input.png} & 
@@ -897,6 +901,7 @@ Figures~\ref{fig:resu_flow1}~and~\ref{fig:resu_flow2} give an overview of estima
 
 
 \begin{table}[H]\begin{center}
+ \setlength{\tabcolsep}{1pt}
 \begin{tabular}{ c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
@@ -913,7 +918,8 @@ Figures~\ref{fig:resu_flow1}~and~\ref{fig:resu_flow2} give an overview of estima
 \end{center}\end{table}
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
  \includegraphics[width=.17\linewidth]{results_flow/1000iter_densenet_comb_wd_do/cnn_tests_restore/cnn_tests0/input.png} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_flow/1000iter_densenet_comb_wd_do/cnn_tests_restore/cnn_tests0/GT_mask.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_flow/1000iter_densenet_comb_wd_do/cnn_tests_restore/cnn_tests0/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_flow/1000iter_bottleneck_wd_do/cnn_tests_restore/cnn_tests0/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_flow/1000iter_densenet_comb2_wd_do/cnn_tests_restore/cnn_tests0/pred_mask_TH.png}} \\
@@ -948,7 +954,8 @@ Figure~\ref{fig:resu_warp1}~and~\ref{fig:resu_warp2} show results for architectu
 
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
 
  \includegraphics[width=.17\linewidth]{results_warp/results/results_early/cnn_tests_restore/cnn_tests1/input.png} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results/results_early/cnn_tests_restore/cnn_tests1/GT_mask.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results/results_early/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results/results_late/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results/results_densenet/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} \\
@@ -964,7 +971,8 @@ Figure~\ref{fig:resu_warp1}~and~\ref{fig:resu_warp2} show results for architectu
 \end{center}\end{table}
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
  
@@ -982,7 +990,8 @@ Figure~\ref{fig:resu_warp1}~and~\ref{fig:resu_warp2} show results for architectu
 \end{center}\end{table}
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
 
@@ -1001,7 +1010,8 @@ Figure~\ref{fig:resu_warp1}~and~\ref{fig:resu_warp2} show results for architectu
 \end{center}\end{table}
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
  \includegraphics[width=.17\linewidth]{results_warp/results_not/results_densenet_comb/cnn_tests_restore/cnn_tests1/input.png} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results_not/results_densenet_comb/cnn_tests_restore/cnn_tests1/GT_mask.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results_not/results_densenet_comb/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results_not/results_bottleneck/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} & \setlength{\fboxrule}{0.5pt} \setlength{\fboxsep}{0pt} \framebox{\includegraphics[width=.17\linewidth, decodearray={1 0 1 0 1 0}]{results_warp/results_not/results_densenet_comb2/cnn_tests_restore/cnn_tests1/pred_mask_TH.png}} \\
@@ -1026,23 +1036,27 @@ In the following Sections we list the results of image in-painting using the gen
 \subsubsection{With Segmentation Mask}
 \label{sssec:num541}
 
-Figure~\ref{fig:resu_pm} gives an overview of the results of different image in-painting approaches. One can see that the Densenet Copy approach achieves the visual most appealing image in-painting results followed by the Densenet Add. The Perona-Malik method has the visual worst results.
+Figure~\ref{fig:resu_pm} gives an overview of the results of different image in-painting approaches. The first three examples are sequences with few optical flow. For this examples the predicted segmentation masks are of good quality and therefore the the image in-painting achieves visually pleasing results. 
+The last two examples have more optical flow. For the sequence with the building, there is a vertical motion of the camera and for the other sequence, there is a strong movement of the hand. As there is a large optical flow, the predicted segmentation mask is bad and therefore the image in-painting performs also bad compared to the ground truth.
+
+One can see that the Densenet Copy approach achieves the visual most appealing image in-painting results followed by the Densenet Add. The Perona-Malik method has the visual worst results.
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c c}
+ \setlength{\tabcolsep}{2pt}
+\begin{tabular}{c c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
  \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests0/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results0/res_diffusion.png} \\
-    \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} &\includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results3/res_diffusion.png} \\
-     \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results5/res_diffusion.png} \\
        \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests7/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results7/res_diffusion.png} \\
         \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests9/pred_out.png} &
  \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results9/res_diffusion.png} \\
+     \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests3/pred_out.png} &\includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results3/res_diffusion.png} \\
+     \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_densenet_comb_predict_masks/cnn_tests_restore/cnn_tests5/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_pred_masks/results_pm_predict_masks/results5/res_diffusion.png} \\
  (a) Input & (b) Mask & (c) GT & (d) \makecell{Densenet\\Copy} & (e) \makecell{Densenet\\Add} & (f) \makecell{Perona-\\Malik}
 \end{tabular}
 
@@ -1055,20 +1069,24 @@ Figure~\ref{fig:resu_pm} gives an overview of the results of different image in-
 \subsubsection{Without Segmentation Mask}
 \label{sssec:num542}
 
-Figure~\ref{fig:resu_pm2} gives an overview of the results of different image in-painting approaches without the use of a segmentation mask. One can see that the Densenet Add approach, trained on a single image channel, achieves the visual most appealing image in-painting results. For the approaches trained on color images, the Densenet Add model performs better than the Densenet Combine Add model.
+Figure~\ref{fig:resu_pm2} gives an overview of the results of different image in-painting approaches without the use of a segmentation mask. The first three sequences have few optical flow. The image in-painting for these sequences works well compared to the ground truth. The last two sequences have more optical flow. For the sequence with the head, there is a horizontal motion, and in the last sequence there is strong motion of the ball. For these two sequences the image in-painting does not just correct the impurities but also adds some artifacts.
+
+One can see that the Densenet Add approach, trained on a single image channel, achieves the visual most appealing image in-painting results. For the approaches trained on color images, the Densenet Add model performs better than the Densenet Combine Add model.
 
 \begin{table}[H]\begin{center}
-\begin{tabular}{ c c c c c c}
+ \setlength{\tabcolsep}{1pt}
+\begin{tabular}{c c c c c c}
  %\multicolumn{}{|c|}{Country List} \\
  
- \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/input.png} & \setlength{\fboxrule}{0.5pt}
-        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests1/pred_out.png} \\
+ 
     \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests4/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests4/pred_out.png} &\includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests4/pred_out.png} \\
      \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests8/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests8/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests8/pred_out.png} \\
        \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests9/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests9/pred_out.png} \\
+        \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/input.png} & \setlength{\fboxrule}{0.5pt}
+        \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests1/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests1/pred_out.png} \\
         \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/input.png} & \setlength{\fboxrule}{0.5pt}
         \setlength{\fboxsep}{0pt}\framebox{\includegraphics[width=.15\linewidth, decodearray={1 0 1 0 1 0}]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/GT_mask.png}} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/GT_out.png}& \includegraphics[width=.15\linewidth]{results_painting_warp/inpai5/cnn_tests_restore/cnn_tests11/pred_out.png} &
  \includegraphics[width=.15\linewidth]{results_painting_warp/inpai6/cnn_tests_restore/cnn_tests11/pred_out.png} & \includegraphics[width=.15\linewidth]{results_painting_warp/inpai7/cnn_tests_restore/cnn_tests11/pred_out.png} \\
